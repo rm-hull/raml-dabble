@@ -1,0 +1,61 @@
+#%RAML 1.0
+---
+title: Temperature Sensor API
+version: 1.0
+
+protocols: [ HTTPS ]
+baseUri: https://how-hot.climate.org/
+
+documentation:
+ - title: Overview
+   content: We have a range of 30,000 locations that record ambient temperature, barometric pressure and humidity. You may query them individually or en-masse, using a provided (secret) token which is unique to you.
+ - title: Registering an account
+   content: You must first register an account before using this API. Contact us [here](http://www.ikea.com/ms/en_US/customer_service/contact_us/contact.html) to open an account.
+mediaType: application/hal+json
+
+annotationTypes:
+  config: object
+  group:
+    type: object
+    properties:
+      name: string
+      description: string
+
+traits:
+  commonHeaders:
+    headers:
+      Accept:
+        description: API version
+        type: string
+        required: true
+        example: application/vnd.hmrc.1.0+json
+
+/api/v2:
+  (group):
+    name: Temperature
+    description: World Temperatures
+  /temp/{location-code}:
+    get:
+      displayName: Get temperature for given location code
+      description: See [here](https://en.wikipedia.org/wiki/Open_Location_Code) for a list of valid location codes.
+      responses:
+        200:
+          body:
+            application/json:
+              example: |
+                {
+                  "location": {
+                    "code": "6PH57VP3+MQ",
+                    "descr": "Merlion Park"
+                  },
+                  "temperature" : {
+                    "value": "23.1",
+                    "unit": "celcius",
+                    "timestamp": 14324553219
+                  },
+                  "humidity": {
+                    "value": "57.7",
+                    "unit": "%",
+                    "timestamp": 14324553229
+                  }
+                }
