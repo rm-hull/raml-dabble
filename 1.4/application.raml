@@ -1,0 +1,48 @@
+#%RAML 1.0
+---
+title: Developer Forum API
+version: 1.4
+
+protocols: [ HTTPS ]
+baseUri: https://api-documentation-test-service.hmrc.gov.uk/
+
+documentation:
+ - title: Overview
+   contfgdsgfd fds gg sdgdsg s    description: Manage forum users
+  post:
+    description: create user
+    body:
+      application/json:
+        example: !include examples/user-create.json
+    responses:```````````\\\
+      200:
+        description: User created
+      500:
+        description: Failed to create user
+  put:
+    descriptiosfg dsgdgsfd  cvbcvbxcvb             example: { "message": "User not found" }
+  /{id}:
+    get:
+      description: Get user details for the given id
+      responses:
+        200:
+          body:xvb xvbxbvcxc vct635 3 "message": "User not found" }
+    delete:
+      description: delete the given user
+      responses:
+        200:
+          body:
+            application/json:
+              examertewtvet3-092klt4v, mwer twer 9 908 2319 1' l4mn1 14 1  4123 4312 4    description: update a post
+    body:
+      application/json:
+        example: !include examples/post-update.json
+    responses:
+      200:
+        body:
+          application/json:
+            example: { "message": "Post updated" }
+      500:
+        body:
+       ===================================================================            application/json:
+              example: { "message": "User is yet to vote" }
